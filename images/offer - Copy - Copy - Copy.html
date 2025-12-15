@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVR Cinemas - Special Offers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #000000;
+            padding: 20px 0;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                       url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b40ee291-8b7c-4838-9f39-93e0d9478cff.png');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #FFD700;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Offers Section */
+        .offers-section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #FFD700;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .offer-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #FFD700;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .offer-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .offer-card:hover .offer-image img {
+            transform: scale(1.05);
+        }
+
+        .offer-content {
+            padding: 25px;
+        }
+
+        .offer-tag {
+            background: #FFD700;
+            color: #000000;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .offer-title {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .offer-description {
+            color: #cccccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .offer-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+        }
+
+        .discounted-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .btn {
+            background: #FFD700;
+            color: #000000;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            padding: 40px 0;
+            border-top: 2px solid #FFD700;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer p {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">CINEBOOK CINEMAS</a>
+                <ul class="nav-links">
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Offers</a></li>
+                    <li><a href="#">Experience</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>EXCLUSIVE MOVIE OFFERS</h1>
+            <p>Experience the magic of cinema with our special promotions and unbeatable deals</p>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers-section">
+        <div class="container">
+            <h2 class="section-title">SPECIAL OFFERS</h2>
+            
+            <div class="offers-grid">
+                <!-- Family Package -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b40ee291-8b7c-4838-9f39-93e0d9478cff.png" alt="Family enjoying movie at PVR cinema">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Family Special</span>
+                        <h3 class="offer-title">FAMILY PACKAGE</h3>
+                        <p class="offer-description">Perfect for family outings! Get 4 tickets with complimentary popcorn and drinks package.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹2000</span>
+                            <span class="discounted-price">₹1499</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+                <!-- Couple Package -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d750453-6a72-4c25-94b9-be0743e5c23f.png" alt="Couple enjoying romantic movie date">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Date Night</span>
+                        <h3 class="offer-title">COUPLE SPECIAL</h3>
+                        <p class="offer-description">Romantic movie night package for couples with premium seating and special combo.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹1200</span>
+                            <span class="discounted-price">₹899</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+                <!-- Student Offer -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/da9dbba1-c020-45ca-9116-da8edf1b2aad.png" alt="Students enjoying movie with friends">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Student Deal</span>
+                        <h3 class="offer-title">STUDENT SPECIAL</h3>
+                        <p class="offer-description">Exclusive discount for students! Show your ID and get amazing deals on tickets.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹600</span>
+                            <span class="discounted-price">₹399</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+                <!-- Weekend Special -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard.png" alt="Weekend movie special with friends">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Weekend Special</span>
+                        <h3 class="offer-title">WEEKEND PACKAGE</h3>
+                        <p class="offer-description">Enjoy weekend movies with friends! Special group discounts and combo offers.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹1500</span>
+                            <span class="discounted-price">₹999</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+                <!-- Corporate Package -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard2.png" alt="Corporate team building movie event">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Corporate</span>
+                        <h3 class="offer-title">CORPORATE PACKAGE</h3>
+                        <p class="offer-description">Special rates for corporate bookings and team outings with catering options.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹8000</span>
+                            <span class="discounted-price">₹5999</span>
+                        </div>
+                        <button class="btn">ENQUIRE NOW</button>
+                    </div>
+                </div>
+
+                <!-- Loyalty Program -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard3.png" alt="PVR loyalty program benefits">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Loyalty</span>
+                        <h3 class="offer-title">LOYALTY PROGRAM</h3>
+                        <p class="offer-description">Join our loyalty program and earn points on every visit with exclusive benefits.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹499</span>
+                            <span class="discounted-price">FREE</span>
+                        </div>
+                        <button class="btn">JOIN NOW</button>
+                    </div>
+                </div>
+
+                <!-- New Additional Cards -->
+
+                <!-- Morning Show Offer -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard4.png" alt="Early morning movie show special">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Morning Show</span>
+                        <h3 class="offer-title">EARLY BIRD SPECIAL</h3>
+                        <p class="offer-description">Catch the first show of the day! 40% off on all morning shows before 11 AM.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹500</span>
+                            <span class="discounted-price">₹299</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+                <!-- Premium Format Offer -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard5.png" alt="CINEBOOK IMAX premium experience">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Premium</span>
+                        <h3 class="offer-title">IMAX EXPERIENCE</h3>
+                        <p class="offer-description">Experience movies in IMAX format! Special discount on premium format tickets.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹1200</span>
+                            <span class="discounted-price">₹899</span>
+                        </div>
+                        <button class="btn">EXPERIENCE NOW</button>
+                    </div>
+                </div>
+
+                <!-- Food Combo Offer -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard6.png" alt="PVR food and beverage combo">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Food Special</span>
+                        <h3 class="offer-title">GOURMET COMBO</h3>
+                        <p class="offer-description">Enjoy premium food and beverages! Special combo deals on popcorn, drinks and snacks.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹800</span>
+                            <span class="discounted-price">₹599</span>
+                        </div>
+                        <button class="btn">ORDER NOW</button>
+                    </div>
+                </div>
+
+                <!-- Senior Citizen Offer -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard7.png" alt="Senior citizen movie offer">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Senior Citizen</span>
+                        <h3 class="offer-title">SENIOR SPECIAL</h3>
+                        <p class="offer-description">Special discounts for senior citizens! Show your ID for 30% off on all tickets.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹600</span>
+                            <span class="discounted-price">₹420</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+                <!-- Birthday Special -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard8.png" alt="Birthday celebration at PVR">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Birthday</span>
+                        <h3 class="offer-title">BIRTHDAY SPECIAL</h3>
+                        <p class="offer-description">Celebrate your birthday at CINEBOOK! Free ticket for birthday person with valid ID.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹800</span>
+                            <span class="discounted-price">₹400</span>
+                        </div>
+                        <button class="btn">CELEBRATE NOW</button>
+                    </div>
+                </div>
+
+                <!-- Festive Season Offer -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="offercard9.png" alt="Festive season special offers">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">Festive</span>
+                        <h3 class="offer-title">FESTIVE SPECIAL</h3>
+                        <p class="offer-description">Celebrate festivals with CINEBOOK! Special rates and complimentary snacks during festive season.</p>
+                        <div class="offer-price">
+                            <span class="original-price">₹1000</span>
+                            <span class="discounted-price">₹699</span>
+                        </div>
+                        <button class="btn">BOOK NOW</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 CINEBOOK Cinemas. All Rights Reserved.</p>
+                <p>Experience the magic of movies</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const offerTitle = this.parentElement.querySelector('.offer-title').textContent;
+                    alert('Booking: ' + offerTitle + '\nRedirecting to booking page...');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
